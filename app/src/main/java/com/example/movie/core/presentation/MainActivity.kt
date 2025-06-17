@@ -29,7 +29,7 @@ import com.example.movie.ui.theme.MovieTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 
- @AndroidEntryPoint
+ @AndroidEntryPoint  //wstrzykiwania zależności przez Hilt.
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

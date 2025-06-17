@@ -15,6 +15,7 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 import android.util.Log
+import com.example.movie.BuildConfig
 
 fun getMoviesFromGemini(
     prompt: String,
@@ -24,7 +25,7 @@ fun getMoviesFromGemini(
     Log.d("GeminiAI", "getMoviesFromGemini called with prompt: $prompt")
     CoroutineScope(Dispatchers.IO).launch {
         try {
-            val apiKey = "AIzaSyD6CZLaXrNFTxEZRj5oy81Q7JxDjZZILkc"
+            val apiKey = BuildConfig.GEMINI_API_KEY
             val url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$apiKey"
             val body = """
                 {

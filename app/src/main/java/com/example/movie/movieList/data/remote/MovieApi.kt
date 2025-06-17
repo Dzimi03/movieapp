@@ -4,9 +4,10 @@ import com.example.movie.movieList.data.remote.respond.MovieListDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import com.example.movie.BuildConfig
 
 
-val API_KEY = "0605771259de8763a0e230590920abde"
+//val API_KEY = BuildConfig.TMDB_API_KEY
 
 interface MovieApi {
     @GET("movie/{category}")
@@ -33,7 +34,8 @@ interface MovieApi {
     companion object {
         val BASE_URL = "https://api.themoviedb.org/3/"
         val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500"
-        val API_KEY = "0605771259de8763a0e230590920abde"
+        val API_KEY = BuildConfig.TMDB_API_KEY
+
     }
 
 }

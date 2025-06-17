@@ -46,7 +46,7 @@ import com.example.movie.movieList.util.Screen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavHostController) {
-    val movieListViewModel = hiltViewModel<MovieListViewModel>()
+    val movieListViewModel = hiltViewModel<MovieListViewModel>() // Pobranie instancji ViewModelu przez Hilt (DI)
 
     val movieListState = movieListViewModel.movieListState.collectAsState().value
     val bottomNavController = rememberNavController()

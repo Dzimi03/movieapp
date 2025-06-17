@@ -21,7 +21,7 @@ import javax.inject.Singleton
 object AppModule {
 
     private val interceptor: HttpLoggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
+        level = HttpLoggingInterceptor.Level.BODY // Logowanie zapytań HTTP
     }
 
     private val client: OkHttpClient = OkHttpClient.Builder()
@@ -30,7 +30,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesMovieApi() : MovieApi {
+    fun providesMovieApi() : MovieApi { // Udostępnienie instancji API (Retrofit) do komunikacji z backendem
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(MovieApi.BASE_URL)
@@ -40,7 +40,7 @@ object AppModule {
     }
 
     @Provides
-    @Singleton
+    @Singleton // Udostępnienie instancji bazy danych Room
     fun providesMovieDatabase(app: Application): MovieDatabase {
         return Room.databaseBuilder(
             app,

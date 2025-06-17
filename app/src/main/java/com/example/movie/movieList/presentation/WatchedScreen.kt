@@ -85,8 +85,8 @@ fun WatchedMovieEntity.toMovie(): Movie = Movie(
     popularity = 0.0,
     release_date = "",
     video = false,
-    vote_average = 0.0,
-    vote_count = 0,
+    vote_average = vote_average,
+    vote_count = vote_count,
     adult = false,
     category = ""
 )

@@ -12,6 +12,8 @@ import kotlinx.coroutines.flow.flow
 import okio.IOException
 import javax.inject.Inject
 
+
+
 class MovieListRepositoryImplementation @Inject constructor(
     private val movieApi: MovieApi,
     private val movieDatabase: MovieDatabase
@@ -67,6 +69,7 @@ class MovieListRepositoryImplementation @Inject constructor(
 
     }
     override suspend fun getMovie(id: Int): Flow<Resource<Movie>> {
+
         return flow {
             emit(Resource.Loading(true))
             val movieEntity = movieDatabase.movieDao.getMovieById(id)

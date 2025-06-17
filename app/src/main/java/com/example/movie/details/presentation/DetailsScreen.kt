@@ -26,23 +26,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role.Companion.Button
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.drawable.toBitmap
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavBackStackEntry
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
@@ -52,7 +46,6 @@ import com.example.movie.R
 import com.example.movie.movieList.data.local.movie.WatchedMovieEntity
 import com.example.movie.movieList.presentation.WatchedViewModel
 import com.example.movie.movieList.util.RatingBar
-import com.example.movie.movieList.util.getAverageColor
 
 @Composable
 fun DetailsScreen() {
@@ -79,7 +72,7 @@ fun DetailsScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
-                .padding(bottom = 80.dp) // zostaw miejsce na przyciski
+                .padding(bottom = 80.dp) // miejsce na przyciski
         ) {
 
 
@@ -279,7 +272,10 @@ fun DetailsScreen() {
                             id = movie.id,
                             title = movie.title,
                             poster_path = movie.poster_path,
-                            isWatched = false
+                            isWatched = false,
+                            vote_average = movie.vote_average,
+                            vote_count = movie.vote_count,
+
                         )
                         if (isToWatch) {
                             watchedViewModel.removeMovie(entity)
@@ -306,7 +302,10 @@ fun DetailsScreen() {
                             id = movie.id,
                             title = movie.title,
                             poster_path = movie.poster_path,
-                            isWatched = true
+                            isWatched = true,
+                            vote_average = movie.vote_average,
+                            vote_count = movie.vote_count,
+
                         )
                         if (isWatched) {
                             watchedViewModel.removeMovie(entity)
